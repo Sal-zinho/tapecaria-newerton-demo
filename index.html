@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tapeçaria Newerton | Reforma de Estofados em São Paulo</title>
+    <meta name="description" content="Especialistas em reforma de sofás, poltronas e cadeiras estofadas no Jabaquara, São Paulo. Mais de 18 anos transformando móveis com acabamento artesanal e tecidos premium.">
+    <meta name="keywords" content="tapeçaria jabaquara, reforma de sofá são paulo, reforma de poltronas, troca de tecido sofá, tapeçaria zona sul sp">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #F5F1EB;
+            --color-surface: #FFFFFF;
+            --color-text: #2C241B;
+            --color-text-muted: #6B5D4F;
+            --color-accent: #A67C52;
+            --color-accent-dark: #8B6540;
+            --color-border: #E0D8CC;
+
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+
+            --container: 1200px;
+            --radius: 4px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 500; line-height: 1.1; }
+        h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); letter-spacing: -0.02em; }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.01em; }
+        h3 { font-size: 1.5rem; }
+        p { max-width: 65ch; }
+
+        /* Layout */
+        .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--space-md); }
+        section { padding: var(--space-xl) 0; }
+
+        /* Header */
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(245, 241, 235, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--color-text); text-decoration: none; }
+        .nav-links { display: flex; gap: var(--space-md); list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--color-text-muted); font-size: 0.9rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--color-accent); }
+        .btn-primary {
+            background: var(--color-accent); color: white; padding: 0.75rem 1.5rem;
+            text-decoration: none; border-radius: var(--radius); font-weight: 500;
+            transition: background 0.3s; display: inline-block;
+        }
+        .btn-primary:hover { background: var(--color-accent-dark); }
+
+        /* Hero */
+        .hero { min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+        .hero-content { position: relative; z-index: 2; max-width: 600px; }
+        .hero-subtitle { font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: var(--space-sm); }
+        .hero h1 { margin-bottom: var(--space-md); color: var(--color-text); }
+        .hero-cta { display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-top: var(--space-md); }
+        .btn-secondary {
+            background: transparent; border: 1px solid var(--color-text); color: var(--color-text);
+            padding: 0.75rem 1.5rem; text-decoration: none; border-radius: var(--radius);
+            font-weight: 500; transition: all 0.3s;
+        }
+        .btn-secondary:hover { background: var(--color-text); color: white; }
+        .hero-image {
+            position: absolute; right: -10%; top: 50%; transform: translateY(-50%);
+            width: 55%; height: 80%; z-index: 1; opacity: 0.9;
+        }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
+        .service-card {
+            background: var(--color-surface); padding: var(--space-md); border-radius: var(--radius);
+            border: 1px solid var(--color-border); transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(44,36,27,0.08); }
+        .service-icon { font-size: 2rem; margin-bottom: var(--space-sm); }
+        .service-card h3 { margin-bottom: var(--space-xs); }
+        .service-card p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+        /* Gallery */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-sm); margin-top: var(--space-lg); }
+        .gallery-item { aspect-ratio: 4/3; overflow: hidden; border-radius: var(--radius); position: relative; cursor: pointer; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-badge {
+            position: absolute; top: var(--space-xs); left: var(--space-xs);
+            background: white; padding: 0.25rem 0.75rem; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 600; color: var(--color-text);
+        }
+
+        /* Process */
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); counter-reset: step; }
+        .step { position: relative; padding-left: var(--space-lg); }
+        .step::before {
+            counter-increment: step; content: counter(step);
+            position: absolute; left: 0; top: 0;
+            font-family: var(--font-display); font-size: 3rem; color: var(--color-border); font-weight: 600;
+        }
+        .step h3 { margin-bottom: var(--space-xs); }
+        .step p { color: var(--color-text-muted); font-size: 0.9rem; }
+
+        /* FAQ */
+        .faq-list { max-width: 800px; margin: var(--space-lg) auto 0; }
+        .faq-item { border-bottom: 1px solid var(--color-border); }
+        .faq-question {
+            width: 100%; padding: var(--space-md) 0; background: none; border: none;
+            text-align: left; font-family: var(--font-display); font-size: 1.25rem;
+            cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            color: var(--color-text);
+        }
+        .faq-answer { padding: 0 0 var(--space-md); color: var(--color-text-muted); display: none; }
+        .faq-item.active .faq-answer { display: block; }
+        .faq-toggle { transition: transform 0.3s; }
+        .faq-item.active .faq-toggle { transform: rotate(45deg); }
+
+        /* Contact */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-top: var(--space-lg); }
+        .contact-info h3 { margin-bottom: var(--space-sm); }
+        .contact-item { display: flex; gap: var(--space-sm); margin-bottom: var(--space-sm); align-items: flex-start; }
+        .contact-item span { color: var(--color-text-muted); }
+        .map-container { border-radius: var(--radius); overflow: hidden; height: 400px; background: var(--color-border); }
+        .map-container iframe { width: 100%; height: 100%; border: 0; }
+
+        /* Footer */
+        footer { background: var(--color-text); color: var(--color-bg); padding: var(--space-lg) 0; margin-top: var(--space-xl); }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); }
+        .footer-section h4 { color: var(--color-bg); margin-bottom: var(--space-sm); font-size: 1.1rem; }
+        .footer-section a { color: var(--color-border); text-decoration: none; display: block; margin-bottom: var(--space-xs); transition: color 0.3s; }
+        .footer-section a:hover { color: var(--color-accent); }
+        .footer-bottom { margin-top: var(--space-lg); padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: var(--color-text-muted); font-size: 0.85rem; }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed; bottom: var(--space-md); right: var(--space-md);
+            background: #25D366; color: white; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            z-index: 1000; transition: transform 0.3s; text-decoration: none;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-image { display: none; }
+            .hero-content { max-width: 100%; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .step { padding-left: var(--space-md); }
+            .step::before { font-size: 2rem; }
+        }
+
+        /* Disclaimer */
+        .demo-notice {
+            background: var(--color-accent); color: white; text-align: center;
+            padding: var(--space-xs); font-size: 0.8rem; position: fixed;
+            bottom: 0; left: 0; right: 0; z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Tapeçaria Newerton</a>
+                <ul class="nav-links">
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#trabalhos">Trabalhos</a></li>
+                    <li><a href="#processo">Como Funciona</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <a href="https://wa.me/5511998344434?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20reforma%20de%20estofado." class="btn-primary" target="_blank" rel="noopener">Solicitar Orçamento</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-subtitle">Desde 2008 transformando móveis em São Paulo</p>
+                <h1>Seu estofado merece uma nova história.</h1>
+                <p style="color: var(--color-text-muted); font-size: 1.1rem;">Reforme, renove e transforme seus móveis com soluções personalizadas em tapeçaria e acabamento artesanal.</p>
+                <div class="hero-cta">
+                    <a href="https://wa.me/5511998344434?text=Olá!%20Vi%20o%20site%20e%20gostaria%20de%20um%20orçamento." class="btn-primary" target="_blank" rel="noopener">Solicitar Orçamento</a>
+                    <a href="#trabalhos" class="btn-secondary">Ver Trabalhos</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" alt="Sofá reformado com tecido premium">
+        </div>
+    </section>
+
+    <section id="servicos">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <p style="color: var(--color-text-muted);">Soluções completas para renovar seus móveis com qualidade artesanal.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🛋️</div>
+                    <h3>Reforma de Sofás</h3>
+                    <p>Renovação completa de sofás com troca de tecido, espuma e estrutura. Devolvemos a vida útil do seu móvel favorito.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💺</div>
+                    <h3>Poltronas e Cadeiras</h3>
+                    <p>Restauro de poltronas e cadeiras estofadas com atenção aos detalhes e acabamentos refinados.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧵</div>
+                    <h3>Troca de Tecidos</h3>
+                    <p>Ampla variedade de tecidos nacionais e importados. Escolha o material ideal para seu estilo.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Recuperação de Espumas</h3>
+                    <p>Substituição de espumas desgastadas por materiais de alta densidade e conforto duradouro.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🪡</div>
+                    <h3>Almofadas Personalizadas</h3>
+                    <p>Confecção e recuperação de almofadas sob medida para complementar sua decoração.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Atendimento Comercial</h3>
+                    <p>Soluções para escritórios, restaurantes e espaços corporativos com agilidade e qualidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trabalhos" style="background: var(--color-surface);">
+        <div class="container">
+            <h2>Trabalhos Realizados</h2>
+            <p style="color: var(--color-text-muted);">Conheça algumas das nossas transformações recentes.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <span class="gallery-badge">Antes e Depois</span>
+                    <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80" alt="Sofá reformado">
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-badge">Poltrona</span>
+                    <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6369c?auto=format&fit=crop&w=600&q=80" alt="Poltrona restaurada">
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-badge">Tecido Premium</span>
+                    <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" alt="Detalhe de acabamento">
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-badge">Cadeira</span>
+                    <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80" alt="Cadeira estofada">
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-badge">Sofá-Cama</span>
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sofá-cama renovado">
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-badge">Acabamento</span>
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Detalhes de costura">
+                </div>
+            </div>
+            <p style="margin-top: var(--space-md); color: var(--color-text-muted); font-size: 0.85rem; font-style: italic;">* Imagens ilustrativas. As fotos reais dos trabalhos serão inseridas após autorização da empresa.</p>
+        </div>
+    </section>
+
+    <section id="processo">
+        <div class="container">
+            <h2>Como Funciona</h2>
+            <p style="color: var(--color-text-muted);">Um processo simples e transparente do início ao fim.</p>
+            <div class="process-steps">
+                <div class="step">
+                    <h3>Primeiro Contato</h3>
+                    <p>Entre em contato pelo WhatsApp e envie fotos do seu móvel para uma avaliação inicial.</p>
+                </div>
+                <div class="step">
+                    <h3>Avaliação Técnica</h3>
+                    <p>Analisamos as condições do móvel e discutimos suas preferências de tecido e acabamento.</p>
+                </div>
+                <div class="step">
+                    <h3>Orçamento Detalhado</h3>
+                    <p>Você recebe um orçamento completo com opções de materiais e prazo de execução.</p>
+                </div>
+                <div class="step">
+                    <h3>Execução Artesanal</h3>
+                    <p>Nossa equipe realiza a reforma com atenção aos detalhes e qualidade nos acabamentos.</p>
+                </div>
+                <div class="step">
+                    <h3>Entrega Final</h3>
+                    <p>Seu móvel renovado é entregue pronto para transformar seu ambiente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="porque" style="background: var(--color-surface);">
+        <div class="container">
+            <h2>Por Que Escolher a Tapeçaria Newerton?</h2>
+            <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div>
+                    <h3>Experiência Comprovada</h3>
+                    <p style="color: var(--color-text-muted);">Mais de 18 anos de atuação no mercado de tapeçaria em São Paulo.</p>
+                </div>
+                <div>
+                    <h3>Acabamento Artesanal</h3>
+                    <p style="color: var(--color-text-muted);">Cada detalhe é tratado com cuidado para garantir resultados impecáveis.</p>
+                </div>
+                <div>
+                    <h3>Personalização Total</h3>
+                    <p style="color: var(--color-text-muted);">Escolha entre centenas de tecidos e acabamentos para criar o móvel dos seus sonhos.</p>
+                </div>
+                <div>
+                    <h3>Sustentabilidade</h3>
+                    <p style="color: var(--color-text-muted);">Reformar é mais sustentável que comprar novo. Dê uma segunda vida aos seus móveis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2>Perguntas Frequentes</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">Quais tipos de móveis podem ser reformados? <span class="faq-toggle">+</span></button>
+                    <div class="faq-answer">Reformamos sofás, poltronas, cadeiras estofadas, sofás-cama, bancos, cabeceiras de cama e outros móveis estofados. Entre em contato para verificar se seu móvel pode ser recuperado.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como solicitar um orçamento? <span class="faq-toggle">+</span></button>
+                    <div class="faq-answer">Envie fotos do seu móvel pelo WhatsApp para (11) 99834-4434 com uma breve descrição do serviço desejado. Respondemos rapidamente com uma estimativa inicial.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">É possível escolher o tecido? <span class="faq-toggle">+</span></button>
+                    <div class="faq-answer">Sim! Trabalhamos com uma ampla variedade de tecidos nacionais e importados. Você pode escolher cores, texturas e padrões que combinem com sua decoração.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Quanto tempo leva uma reforma? <span class="faq-toggle">+</span></button>
+                    <div class="faq-answer">O prazo varia conforme o tipo de móvel e complexidade do serviço. Em geral, reformas simples levam de 5 a 10 dias úteis. Informamos o prazo exato no orçamento.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Vocês fazem retirada e entrega? <span class="faq-toggle">+</span></button>
+                    <div class="faq-answer">Consulte-nos sobre disponibilidade de retirada e entrega na sua região. Atendemos principalmente a Zona Sul de São Paulo e regiões próximas.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Qual a região de atendimento? <span class="faq-toggle">+</span></button>
+                    <div class="faq-answer">Estamos localizados no Jabaquara, Zona Sul de São Paulo. Atendemos toda a capital e região metropolitana. Consulte-nos para confirmar a cobertura na sua localidade.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" style="background: var(--color-surface);">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Fale Conosco</h3>
+                    <div class="contact-item">
+                        <strong>WhatsApp:</strong>
+                        <span>(11) 99834-4434</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Endereço:</strong>
+                        <span>Av. Engenheiro George Corbisier, 822<br>Jabaquara, São Paulo - SP<br>CEP 04345-000</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Instagram:</strong>
+                        <span><a href="https://instagram.com/tapecaria_newerton" target="_blank" rel="noopener" style="color: var(--color-accent);">@tapecaria_newerton</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Horário:</strong>
+                        <span>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</span>
+                    </div>
+                    <a href="https://wa.me/5511998344434?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20reforma%20de%20estofados." class="btn-primary" style="margin-top: var(--space-md);" target="_blank" rel="noopener">Conversar no WhatsApp</a>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.5!2d-46.64!3d-23.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM3JzQ4LjAiUyA0NsKwMzgnMjQuMCJX!5e0!3m2!1spt-BR!2sbr!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Tapeçaria Newerton</h4>
+                    <p style="color: var(--color-border); font-size: 0.9rem;">Transformando móveis desde 2008 com qualidade artesanal e atendimento personalizado.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#trabalhos">Trabalhos</a>
+                    <a href="#processo">Como Funciona</a>
+                    <a href="#faq">Perguntas Frequentes</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Serviços</h4>
+                    <a href="#servicos">Reforma de Sofás</a>
+                    <a href="#servicos">Poltronas e Cadeiras</a>
+                    <a href="#servicos">Troca de Tecidos</a>
+                    <a href="#servicos">Recuperação de Espumas</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <a href="https://wa.me/5511998344434" target="_blank" rel="noopener">(11) 99834-4434</a>
+                    <a href="https://instagram.com/tapecaria_newerton" target="_blank" rel="noopener">@tapecaria_newerton</a>
+                    <a href="#contato">Jabaquara, São Paulo</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tapeçaria Newerton. CNPJ: 09.515.681/0001-03. Todos os direitos reservados.</p>
+                <p style="margin-top: var(--space-xs); font-size: 0.75rem; opacity: 0.7;">Este site é uma demonstração conceitual desenvolvida como proposta comercial. As imagens utilizadas são ilustrativas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5511998344434?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+        💬
+    </a>
+
+    <div class="demo-notice">
+        ⚠️ Demonstração conceitual — Site desenvolvido como proposta comercial para Tapeçaria Newerton
+    </div>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
