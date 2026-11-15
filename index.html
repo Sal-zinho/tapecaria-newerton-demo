@@ -209,12 +209,57 @@
         /* Mobile */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { grid-template-columns: 1fr; min-height: auto; padding-top: calc(80px + var(--space-md)); }
-            .hero-content { max-width: 100%; padding: 0 var(--space-md) var(--space-md); }
-            .hero-compare { min-height: 300px; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .step { padding-left: var(--space-md); }
-            .step::before { font-size: 2rem; }
+            .btn-primary, .btn-secondary { padding: 0.65rem 1.2rem; font-size: 0.9rem; }
+
+            /* Hero */
+            .hero { grid-template-columns: 1fr; min-height: auto; padding: calc(80px + var(--space-sm)) 0 var(--space-md); gap: var(--space-md); }
+            .hero-content { max-width: 100%; padding: 0 var(--space-sm); }
+            .hero h1 { font-size: clamp(1.8rem, 8vw, 2.5rem); margin-bottom: var(--space-sm); }
+            .hero-subtitle { font-size: 0.95rem; }
+            .hero p { font-size: 1rem !important; }
+            .hero-cta { gap: var(--space-xs); }
+            .hero-compare { min-height: 240px; border-radius: var(--radius); }
+            .hero-compare .label-badge { font-size: 0.65rem; padding: 0.2rem 0.6rem; }
+            .hero-compare .slider-handle { width: 36px; height: 36px; }
+            .hero-compare .slider-handle svg { width: 16px; height: 16px; }
+
+            /* Sections spacing */
+            section { padding: var(--space-lg) 0; }
+            .container { padding: 0 var(--space-sm); }
+            h2 { font-size: clamp(1.6rem, 6vw, 2rem); }
+
+            /* Services — single column on mobile */
+            .services-grid { grid-template-columns: 1fr; gap: var(--space-sm); margin-top: var(--space-md); }
+            .service-card { padding: var(--space-sm); }
+            .service-icon { width: 40px; height: 40px; }
+
+            /* Gallery — single column on mobile */
+            .gallery-grid { grid-template-columns: 1fr; gap: var(--space-sm); margin-top: var(--space-md); }
+
+            /* Process steps */
+            .process-steps { grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-md); }
+            .step { padding-left: calc(var(--space-md) + 0.5rem); }
+            .step::before { font-size: 1.8rem; }
+
+            /* Why choose us */
+            #porque .services-grid { grid-template-columns: 1fr; }
+
+            /* FAQ */
+            .faq-list { margin-top: var(--space-md); }
+            .faq-question { font-size: 1.05rem; padding: var(--space-sm) 0; }
+
+            /* Contact */
+            .contact-grid { grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-md); }
+            .map-container { height: 280px; }
+
+            /* Footer */
+            footer { padding: var(--space-md) 0; margin-top: var(--space-lg); }
+            .footer-content { grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+            .footer-bottom { margin-top: var(--space-md); padding-top: var(--space-sm); }
+
+            /* WhatsApp float — avoid overlapping demo notice */
+            .whatsapp-float { bottom: calc(var(--space-sm) + 32px); right: var(--space-sm); width: 52px; height: 52px; font-size: 1.6rem; }
+            .demo-notice { font-size: 0.7rem; padding: 0.3rem var(--space-xs); }
         }
 
         /* Disclaimer */
@@ -257,8 +302,8 @@
         <div class="hero-compare" id="heroCompare">
             <span class="label-badge label-before">Antes</span>
             <span class="label-badge label-after">Depois</span>
-            <img class="img-after" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" alt="Sofá reformado — depois">
-            <img class="img-before" id="imgBefore" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80&sat=-100&bri=-20" alt="Sofá desgastado — antes">
+            <img class="img-after" src="https://scontent.cdninstagram.com/v/t51.82787-15/671282744_18337194019216810_5346621463918940045_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=DpVmG1frPxwQ7kNvwHs59TV&_nc_oc=Adr-zCcEiXuGF6qinF8LOzoi-AMXRjUrurGz5TwdxG-CK956Az7cLCJtQnIkw5uVMBI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=_u50ptcY_3WidYCnNQhK5g&_nc_ss=7a60f&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQRbc7vDj--HDV8U7CrKKzJ2jgWMt5y_l2wntRQ8UWBNyw&oe=6AFF8D5A" alt="Trabalho realizado pela Tapeçaria Newerton — depois">
+            <img class="img-before" id="imgBefore" src="https://scontent.cdninstagram.com/v/t51.82787-15/561908345_18311198215216810_8275953945173327076_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ZRJSgkkguyQQ7kNvwFwhMlG&_nc_oc=AdrxFzL7o0ihne_HRvJh7HgFUwAadj9nIxgH258gTjA4SzN6q1hSyLJx0RomTtA7mGQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=_u50ptcY_3WidYCnNQhK5g&_nc_ss=7a60f&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQTSqriINLolQXsRHK3jlKnhs9k6RHv9Ea3iDsLcZ87BPA&oe=6AFFA4F8" alt="Trabalho realizado pela Tapeçaria Newerton — antes">
             <div class="slider-line" id="sliderLine"></div>
             <div class="slider-handle" id="sliderHandle">
                 <svg viewBox="0 0 24 24"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg>
@@ -311,31 +356,31 @@
             <p style="color: var(--color-text-muted);">Conheça algumas das nossas transformações recentes.</p>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <span class="gallery-badge">Antes e Depois</span>
-                    <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=600&q=80" alt="Sofá reformado">
+                    <span class="gallery-badge">Reforma Completa</span>
+                    <img src="https://scontent.cdninstagram.com/v/t51.82787-15/476231411_18285027550216810_7588925364047617698_n.jpg?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=V5SSCIXjseoQ7kNvwFgjXmL&_nc_oc=AdqH_90FoR6IlPrO2GXYgbSRXhKO-XRzg3LojrsTqJ6-Ia7HLGAVf4OP97awedrGe-Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=_u50ptcY_3WidYCnNQhK5g&_nc_ss=7a60f&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQRmF7kmJ6YVe8vsduBEX4yB5RW5tpn8BJxdg2jij095MQ&oe=6AFFA560" alt="Reforma completa — Tapeçaria Newerton">
                 </div>
                 <div class="gallery-item">
-                    <span class="gallery-badge">Poltrona</span>
-                    <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6369c?auto=format&fit=crop&w=600&q=80" alt="Poltrona restaurada">
+                    <span class="gallery-badge">Estofado Renovado</span>
+                    <img src="https://scontent.cdninstagram.com/v/t51.82787-15/625027208_18104525980694837_9197878506662141921_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=D4QlB1fkb5sQ7kNvwFE4da1&_nc_oc=AdroEXPekCFk-_ax2ZruHe07zo6uI89gMo0QShthh23TSxFakJX-6Zp-mLwlvwDJf3c&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=_u50ptcY_3WidYCnNQhK5g&_nc_ss=7a60f&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQTyA9xAcqAU_jykKwuA_Pt4i0nvkLOEj2j1pgI42-yXlw&oe=6AFF7FBE" alt="Estofado renovado — Tapeçaria Newerton">
                 </div>
                 <div class="gallery-item">
-                    <span class="gallery-badge">Tecido Premium</span>
-                    <img src="https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=600&q=80" alt="Detalhe de acabamento">
+                    <span class="gallery-badge">Acabamento Artesanal</span>
+                    <img src="https://scontent.cdninstagram.com/v/t51.82787-15/626280959_18238957225306896_5390672709733688870_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=2HgTPzT6E04Q7kNvwEX5GmU&_nc_oc=Adp1Ae3y_RQ1o852koXCxtYldJpl3m0aGqFqCr0c008TFqeJjSr_GScWmFPO4fg1rTs&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=_u50ptcY_3WidYCnNQhK5g&_nc_ss=7a60f&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQSfmepls9sWcDYzTrNPXxpxby1Pdjs7zhlPqTZNREdsLw&oe=6AFF8A1C" alt="Acabamento artesanal — Tapeçaria Newerton">
                 </div>
                 <div class="gallery-item">
-                    <span class="gallery-badge">Cadeira</span>
-                    <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80" alt="Cadeira estofada">
+                    <span class="gallery-badge">Troca de Tecido</span>
+                    <img src="https://scontent.cdninstagram.com/v/t51.82787-15/624712631_18106089271773887_3270672043364198036_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=2zpN2slPUToQ7kNvwERoBZd&_nc_oc=AdpUPI5AqT-wrWRx3zSX6l7KeOhhiF1UnF9Np9cPNsVoYwyP5SLxOaTAbohafAxOb6g&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=_u50ptcY_3WidYCnNQhK5g&_nc_ss=7a60f&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQRWAWwlFY8zZqwbjb9d3b82HjCplE7VRt4wGdSws0eUAg&oe=6AFF81F0" alt="Troca de tecido — Tapeçaria Newerton">
                 </div>
                 <div class="gallery-item">
-                    <span class="gallery-badge">Sofá-Cama</span>
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80" alt="Sofá-cama renovado">
+                    <span class="gallery-badge">Poltrona Restaurada</span>
+                    <img src="https://scontent.cdninstagram.com/v/t51.82787-15/621429787_18081851867240273_2286197801716451603_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=UVNekQg5FOoQ7kNvwGBV5nw&_nc_oc=AdrWQA3UXpUS6l5lrjKSJxPXx0kmJb-LbSwdX5391gxNcKJOys9PjhwfalUiuX4pdYU&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=_u50ptcY_3WidYCnNQhK5g&_nc_ss=7a60f&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQT94qTNpJTJ5m5HPpAxdAvDrKdzvNVvdKxV73Rgpv85BA&oe=6AFF82A9" alt="Poltrona restaurada — Tapeçaria Newerton">
                 </div>
                 <div class="gallery-item">
-                    <span class="gallery-badge">Acabamento</span>
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Detalhes de costura">
+                    <span class="gallery-badge">Detalhes de Costura</span>
+                    <img src="https://scontent.cdninstagram.com/v/t51.82787-15/621157254_18078278273462913_8380764907733056892_n.webp?stp=dst-jpg_e35_s640x640_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiRkVFRC5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ms-3uGYEUxcQ7kNvwGKpHT0&_nc_oc=AdrkLiGzccl_DMqPRcuVkNF6tMomUDj8riZ1mPdZl_hxTAbwSs4L6pjh2uAty4lldJw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&_nc_gid=_u50ptcY_3WidYCnNQhK5g&_nc_ss=7a60f&_nc_ct=RQosPBUKFQIAAAA&oh=00_AQQ_QwCtN6PbhM2lJDpP1sDRZo7VDXwy9un8wOjgbMqGGQ&oe=6AFF873D" alt="Detalhes de costura — Tapeçaria Newerton">
                 </div>
             </div>
-            <p style="margin-top: var(--space-md); color: var(--color-text-muted); font-size: 0.85rem; font-style: italic;">* Imagens ilustrativas. As fotos reais dos trabalhos serão inseridas após autorização da empresa.</p>
+            <p style="margin-top: var(--space-md); color: var(--color-text-muted); font-size: 0.85rem; font-style: italic;">* Fotos reais dos trabalhos realizados pela Tapeçaria Newerton, extraídas do perfil oficial @tapecaria_newerton.</p>
         </div>
     </section>
 
