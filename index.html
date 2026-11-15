@@ -78,10 +78,11 @@
         .btn-primary:hover { background: var(--color-accent-dark); }
 
         /* Hero */
-        .hero { min-height: 90vh; display: flex; align-items: center; position: relative; overflow: hidden; }
-        .hero-content { position: relative; z-index: 2; max-width: 600px; }
+        .hero { min-height: 90vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; overflow: hidden; padding: calc(80px + var(--space-lg)) 0 var(--space-lg); }
+        .hero .container { display: contents; }
+        .hero-content { position: relative; z-index: 2; max-width: 560px; padding: 0 var(--space-md); }
         .hero-subtitle { font-size: 1.1rem; color: var(--color-text-muted); margin-bottom: var(--space-sm); }
-        .hero h1 { margin-bottom: var(--space-md); color: var(--color-text); }
+        .hero h1 { margin-bottom: var(--space-md); color: var(--color-text); line-height: 1.05; }
         .hero-cta { display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-top: var(--space-md); }
         .btn-secondary {
             background: transparent; border: 1px solid var(--color-text); color: var(--color-text);
@@ -89,11 +90,47 @@
             font-weight: 500; transition: all 0.3s;
         }
         .btn-secondary:hover { background: var(--color-text); color: white; }
-        .hero-image {
-            position: absolute; right: -10%; top: 50%; transform: translateY(-50%);
-            width: 55%; height: 80%; z-index: 1; opacity: 0.9;
+
+        /* Before/After Slider */
+        .hero-compare {
+            position: relative; width: 100%; height: 100%; min-height: 500px;
+            overflow: hidden; cursor: col-resize; user-select: none;
         }
-        .hero-image img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+        .hero-compare img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; pointer-events: none;
+        }
+        .hero-compare .img-after { z-index: 1; }
+        .hero-compare .img-before { z-index: 2; clip-path: inset(0 50% 0 0); transition: clip-path 0.05s linear; }
+        .hero-compare .slider-line {
+            position: absolute; top: 0; bottom: 0; left: 50%; width: 3px;
+            background: white; z-index: 3; pointer-events: none;
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
+            transition: left 0.05s linear;
+        }
+        .hero-compare .slider-handle {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 44px; height: 44px; background: white; border-radius: 50%;
+            z-index: 4; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25); pointer-events: none;
+            transition: left 0.05s linear;
+        }
+        .hero-compare .slider-handle svg { width: 20px; height: 20px; stroke: var(--color-text); fill: none; stroke-width: 2; }
+        .hero-compare .label-badge {
+            position: absolute; top: var(--space-sm); z-index: 5;
+            background: rgba(255,255,255,0.92); padding: 0.3rem 0.9rem;
+            border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+            color: var(--color-text); pointer-events: none; backdrop-filter: blur(4px);
+        }
+        .hero-compare .label-before { left: var(--space-sm); }
+        .hero-compare .label-after { right: var(--space-sm); }
+
+        /* Scroll Animations */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .service-card.reveal { transition-delay: calc(var(--i, 0) * 0.08s); }
+        .step.reveal { transition-delay: calc(var(--i, 0) * 0.1s); }
+        .gallery-item.reveal { transition-delay: calc(var(--i, 0) * 0.06s); }
 
         /* Services */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
@@ -102,7 +139,8 @@
             border: 1px solid var(--color-border); transition: transform 0.3s, box-shadow 0.3s;
         }
         .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(44,36,27,0.08); }
-        .service-icon { font-size: 2rem; margin-bottom: var(--space-sm); }
+        .service-icon { width: 48px; height: 48px; margin-bottom: var(--space-sm); color: var(--color-accent); }
+        .service-icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
         .service-card h3 { margin-bottom: var(--space-xs); }
         .service-card p { color: var(--color-text-muted); font-size: 0.95rem; }
 
@@ -171,8 +209,9 @@
         /* Mobile */
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero-image { display: none; }
-            .hero-content { max-width: 100%; }
+            .hero { grid-template-columns: 1fr; min-height: auto; padding-top: calc(80px + var(--space-md)); }
+            .hero-content { max-width: 100%; padding: 0 var(--space-md) var(--space-md); }
+            .hero-compare { min-height: 300px; }
             .contact-grid { grid-template-columns: 1fr; }
             .step { padding-left: var(--space-md); }
             .step::before { font-size: 2rem; }
@@ -215,8 +254,15 @@
                 </div>
             </div>
         </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" alt="Sofá reformado com tecido premium">
+        <div class="hero-compare" id="heroCompare">
+            <span class="label-badge label-before">Antes</span>
+            <span class="label-badge label-after">Depois</span>
+            <img class="img-after" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80" alt="Sofá reformado — depois">
+            <img class="img-before" id="imgBefore" src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=1200&q=80&sat=-100&bri=-20" alt="Sofá desgastado — antes">
+            <div class="slider-line" id="sliderLine"></div>
+            <div class="slider-handle" id="sliderHandle">
+                <svg viewBox="0 0 24 24"><path d="M8 6l-6 6 6 6"/><path d="M16 6l6 6-6 6"/></svg>
+            </div>
         </div>
     </section>
 
@@ -226,32 +272,32 @@
             <p style="color: var(--color-text-muted);">Soluções completas para renovar seus móveis com qualidade artesanal.</p>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🛋️</div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 18v-2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"/><path d="M4 14V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v6"/><line x1="2" y1="18" x2="22" y2="18"/><line x1="6" y1="22" x2="6" y2="18"/><line x1="18" y1="22" x2="18" y2="18"/></svg></div>
                     <h3>Reforma de Sofás</h3>
                     <p>Renovação completa de sofás com troca de tecido, espuma e estrutura. Devolvemos a vida útil do seu móvel favorito.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">💺</div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M6 18v-2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/><path d="M5 14V9a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v5"/><path d="M4 14h16"/><line x1="7" y1="22" x2="7" y2="18"/><line x1="17" y1="22" x2="17" y2="18"/><path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg></div>
                     <h3>Poltronas e Cadeiras</h3>
                     <p>Restauro de poltronas e cadeiras estofadas com atenção aos detalhes e acabamentos refinados.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🧵</div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M4 20V10a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/><path d="M12 12v4"/><path d="M10 14h4"/></svg></div>
                     <h3>Troca de Tecidos</h3>
                     <p>Ampla variedade de tecidos nacionais e importados. Escolha o material ideal para seu estilo.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">✨</div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M3 12h18"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><circle cx="12" cy="13" r="1"/></svg></div>
                     <h3>Recuperação de Espumas</h3>
                     <p>Substituição de espumas desgastadas por materiais de alta densidade e conforto duradouro.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🪡</div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
                     <h3>Almofadas Personalizadas</h3>
                     <p>Confecção e recuperação de almofadas sob medida para complementar sua decoração.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🏢</div>
+                    <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/><path d="M12 12v3"/><circle cx="12" cy="12" r="1"/></svg></div>
                     <h3>Atendimento Comercial</h3>
                     <p>Soluções para escritórios, restaurantes e espaços corporativos com agilidade e qualidade.</p>
                 </div>
@@ -481,6 +527,53 @@
                 header.style.boxShadow = 'none';
             }
         });
+
+        // Before/After Slider
+        (function() {
+            const compare = document.getElementById('heroCompare');
+            const imgBefore = document.getElementById('imgBefore');
+            const sliderLine = document.getElementById('sliderLine');
+            const sliderHandle = document.getElementById('sliderHandle');
+            if (!compare || !imgBefore) return;
+
+            let isDragging = false;
+
+            function updateSlider(x) {
+                const rect = compare.getBoundingClientRect();
+                let pct = ((x - rect.left) / rect.width) * 100;
+                pct = Math.max(5, Math.min(95, pct));
+                imgBefore.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+                sliderLine.style.left = pct + '%';
+                sliderHandle.style.left = pct + '%';
+            }
+
+            compare.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
+            compare.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); }, { passive: true });
+            window.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
+            window.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); }, { passive: true });
+            window.addEventListener('mouseup', () => { isDragging = false; });
+            window.addEventListener('touchend', () => { isDragging = false; });
+        })();
+
+        // Scroll Reveal Animations
+        (function() {
+            const revealElements = document.querySelectorAll('.service-card, .step, .gallery-item, section > .container > h2');
+            revealElements.forEach((el, i) => {
+                el.classList.add('reveal');
+                el.style.setProperty('--i', i % 6);
+            });
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+            revealElements.forEach(el => observer.observe(el));
+        })();
     </script>
 </body>
 </html>
